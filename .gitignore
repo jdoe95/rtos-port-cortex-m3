@@ -1,3 +1,10 @@
+# makefile dependencies
+*.d
+
+# makefiles
+*.mk
+makefile
+
 # Compiled Object files
 *.slo
 *.lo
