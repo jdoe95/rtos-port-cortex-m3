@@ -32,10 +32,6 @@ port_enableInterrupts:
 	.type PendSV_Handler, %function
 PendSV_Handler:
 	CPSID I
-	LDR R0, =contextNoSave
-	LDR R1, [R0]
-	CBNZ R1, PendSV_Handler_1
-
 	///////////////////////////////////////////////////////
 	LDR R0, =currentThread // & currentThread
 	LDR R0, [R0] // currentThread, & currentThread->PSP
@@ -43,7 +39,7 @@ PendSV_Handler:
 	STMDB R12!, {R4-R11} // save context
 	STR R12, [R0] // R12 -> currentThread->PSP
 
-PendSV_Handler_1: // context switch nosave
+	///////////////////////////////////////////////////////
 	LDR R0, =nextThread // & nextThread
 	LDR R0, [R0] // nextReadyThread, & nextReadyThread->PSP
 	LDR R12, [R0] // nextReadyThread->PSP -> R12
@@ -52,10 +48,10 @@ PendSV_Handler_1: // context switch nosave
 
 	LDR R1, =currentThread // & currentThread
 	STR R0, [R1] // currentThread = nextReadyThread
-
+	///////////////////////////////////////////////////////
 	CPSIE I
 	BX LR
-	///////////////////////////////////////////////////////
+
 	.size PendSV_Handler, .-PendSV_Handler
 
 /***********************************************************************/

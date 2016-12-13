@@ -26,8 +26,6 @@ typedef struct {
 #define PENDSV_SET			( 1 << 28 )
 #define SYSTICK_SET			( 1 << 0 )
 
-uint32_t contextNoSave;
-
 extern void asmLoadFirstThread( void );
 
 void
@@ -40,14 +38,6 @@ port_startKernel( void )
 void
 port_yield( void )
 {
-	contextNoSave = 0;
-	PENDSV_REG |= PENDSV_SET;
-}
-
-void
-port_loadNewThread( void )
-{
-	contextNoSave = 1;
 	PENDSV_REG |= PENDSV_SET;
 }
 
