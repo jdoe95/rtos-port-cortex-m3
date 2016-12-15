@@ -65,11 +65,13 @@ port_makeFakeContext( osByte_t* stack, osCounter_t stackSize, osCode_t code, con
 	return (osByte_t*) stackFrame;
 }
 
+/*
 void
 SysTick_Handler( void )
 {
 	osTickHandler();
 }
+*/
 
 osBool_t
 port_isInThread( void )
