@@ -52,7 +52,7 @@ port_heapInit( void )
 }
 
 osByte_t*
-port_makeFakeContext( osByte_t* stack, osCounter_t stackSize, osCode_t code, const void* argument )
+port_makeFakeContext( osByte_t* stack, osCounter_t stackSize, osCode_t code, void* argument )
 {
 	osByte_t* start = stack + stackSize;
 	StackFrame_t* stackFrame = (StackFrame_t*) start;
