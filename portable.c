@@ -51,7 +51,6 @@ port_startKernel( void )
 void
 port_yield( void )
 {
-	//NVIC_SetPendingIRQ( PendSV_IRQn );
 	PENDSV_REG |= PENDSV_SET;
 }
 
@@ -84,3 +83,4 @@ SysTick_Handler( void )
 {
 	osTickHandler();
 }
+
