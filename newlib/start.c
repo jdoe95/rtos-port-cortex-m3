@@ -13,7 +13,7 @@ void init_before_main();
 
 extern int main( void );
 
-char main_stack[MAIN_STACK_SIZE] __attribute__(( section(".main_stack") ));
+osByte_t main_stack[MAIN_STACK_SIZE] __attribute__(( section(".main_stack") ));
 
 INTERRUPT
 void OS_RESET_HANDLER_NAME( void ) {
@@ -43,8 +43,6 @@ void OS_RESET_HANDLER_NAME( void ) {
 	// osStart works properly )
 	run_fini_array();
 }
-
-extern int main( void );
 
 static __inline__ void
 initialize_data( unsigned int * load, unsigned int * begin, unsigned int * end ){

@@ -17,9 +17,9 @@ int _close( int );
 int _execve( char*, char**, char** );
 int fork( void );
 int fstat( int, struct stat* );
-int getpid( void );
+int _getpid( void );
 int isatty( int );
-int kill( int, int );
+int _kill( int, int );
 int link( const char*, const char* );
 off_t lseek( int, off_t, int );
 int open( const char*, int, int );
@@ -98,7 +98,7 @@ fstat(
  * to conflict with other processes.
  */
 int
-getpid( void )
+_getpid( void )
 {
 	return 1;
 }
@@ -116,7 +116,7 @@ isatty( int file __attribute__((unused)) )
  * Send a signal.
  */
 int
-kill(
+_kill(
 	int pid __attribute__((unused)),
 	int sig __attribute__((unused)) )
 {
