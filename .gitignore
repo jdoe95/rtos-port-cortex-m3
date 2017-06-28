@@ -7,6 +7,10 @@
 # memory map files
 *.map
 
+# makefiles
+*.mk
+makefile
+
 # Compiled Object files
 *.slo
 *.lo
