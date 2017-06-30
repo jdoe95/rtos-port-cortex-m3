@@ -16,14 +16,14 @@ void _exit( int );
 int _close( int );
 int _execve( char*, char**, char** );
 int fork( void );
-int fstat( int, struct stat* );
+int _fstat( int, struct stat* );
 int _getpid( void );
-int isatty( int );
+int _isatty( int );
 int _kill( int, int );
 int link( const char*, const char* );
-off_t lseek( int, off_t, int );
+off_t _lseek( int, off_t, int );
 int open( const char*, int, int );
-int read( int, void*, size_t );
+int _read( int, void*, size_t );
 void* sbrk( ptrdiff_t );
 int stat( const char*, struct stat* );
 clock_t times( struct tms* );
@@ -85,7 +85,7 @@ fork(void)
  * status of an open file.
  */
 int
-fstat(
+_fstat(
 	int file __attribute__((unused)),
 	struct stat *st __attribute__((unused)) )
 {
@@ -107,7 +107,7 @@ _getpid( void )
  * Query whether output stream is a terminal.
  */
 int
-isatty( int file __attribute__((unused)) )
+_isatty( int file __attribute__((unused)) )
 {
 	return 1;
 }
@@ -140,7 +140,7 @@ link(
  * Set a position in a file.
  */
 off_t
-lseek(
+_lseek(
 	int file __attribute__((unused)),
 	off_t pos __attribute__((unused)),
 	int whence __attribute__((unused)) )
@@ -164,7 +164,7 @@ open(
  * Read from a file.
  */
 int
-read(
+_read(
 	int file __attribute__((unused)),
 	void *ptr __attribute__((unused)),
 	size_t len __attribute__((unused)) )
