@@ -11,7 +11,7 @@ static __inline__ void run_fini_array( void );
 void init_before_os();
 void init_before_main();
 
-extern int main( void );
+extern void main( void );
 
 osByte_t main_stack[MAIN_STACK_SIZE] __attribute__(( section(".main_stack") ));
 
@@ -34,7 +34,7 @@ void OS_RESET_HANDLER_NAME( void ) {
 	// initializations that should be done before starting the main thread
 	init_before_main();
 
-	osThreadCreate( 0, (osCode_t)main, 1024, NULL );
+	main();
 
 	// start the operating system
 	osStart();
